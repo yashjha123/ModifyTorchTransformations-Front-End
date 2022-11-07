@@ -1,0 +1,75 @@
+:root{
+  --primary: #557153;
+  --secondary: #7D8F69;
+}
+.App {
+  text-align: center;
+  /* background-image: linear-gradient(#7D8F69, #7D8F69); */
+  /* background-size: 10px 10px; */
+  background-position: 10px 0px;
+  background-size: 400% 400%;
+  /* background-color: red; */
+  animation: wave 100s ease-in-out infinite;
+}
+@keyframes wave {
+  0%{
+    background-position: 0px 0px;
+  }
+  50%{
+    background-position: 100vh 100vh;
+  }
+  100%{
+    background-position: 0px 0px;
+  }
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  /* background-color: #282c34; */
+  background-size: 80px 80px;
+  /* background-image: linear-gradient(to right, transparent 0px, transparent 10px, black 10px, #E6E5A3 15px, #E6E5A3 40px); */
+  /* linear-gradient(to bottom, transparent 0px, transparent 5px, black 5px, black 40px); */
+  /* linear-gradient(to bottom, transparent 0px, transparent 5px, black 5px, black 40px);/ */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-position: center center;
+  animation: wave2 10s ease-in-out infinite;
+
+}
+@keyframes wave2 {
+  0%{
+    background-size: 80px 80px;
+  }
+  50%{
+    background-size: 100px 80px;
+  }
+  100%{
+    background-size: 80px 80px;
+  }
+}
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
