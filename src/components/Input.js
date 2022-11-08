@@ -20,7 +20,7 @@ const Form = ({Trans,setTrans, setUUID, setSubmitDisabled}) => {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl)
   }, [File])
-  const onLoad = e => {
+  const onChange = e => {
     if (!e.target.files || e.target.files.length === 0) {
       setFile(undefined)
       return
@@ -72,7 +72,7 @@ const Form = ({Trans,setTrans, setUUID, setSubmitDisabled}) => {
       </div>
       <form onSubmit={onSubmit}>
         {/* <input onChange={(e)=>setFile(e.target.value)} type="text"></input> */}
-        <input onChange={onLoad} name="InputImage" type="file" />
+        <input onChange={onChange} name="InputImage" type="file" />
         <input type="submit" onSubmit={onSubmit}/>
       </form>
     </div>
