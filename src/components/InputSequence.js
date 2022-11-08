@@ -1,0 +1,35 @@
+import React, { useState } from 'react'
+
+const InputSequence = ({SubmitDisabled, ImgURL,setImgURL,setUUID, UUID, Trans, setTrans}) => {
+  const onSubmit2 = (e) => {
+    e.preventDefault()
+    if(!UUID){
+        alert("Upload image first!")
+        return;
+    }
+    fetch('http://localhost:5000/applyTransformations',{
+        method: "POST",
+        body: JSON.stringify({id:UUID,transforms:Trans}),
+        headers: { 'Content-Type': 'application/json' },
+    }).then(res=>res.blob())
+    .then(imageBlob=>{
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+        console.log(imageObjectURL);
+        setImgURL(imageObjectURL)
+    })
+  }
+  return (
+    <div className='block'>
+      <form onSubmit={onSubmit2}>
+      <textarea style={{ width: "20rem" }} value={Trans} onChange={(e) => setTrans(e.target.value)}></textarea>
+      <br />
+      <input type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled}/>
+      <p style={{"fontSize":'11px'}}>
+        {SubmitDisabled ? "Upload image first!": ""}
+      </p>
+    </form>
+    </div>
+  )
+}
+
+export default InputSequence

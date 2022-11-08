@@ -1,15 +1,12 @@
 import React from 'react'
 
-const Output = () => {
+const Output = ({ImgURL}) => {
+
   return (
-    <div>
-        <form onSubmit={onSubmit2}>
-        <textarea style={{ width: "50rem" }} value={Trans} onChange={(e) => setTrans(e.target.value)}></textarea>
-        <br />
-        <img src={ImgURL} />
-        <input type="submit" onSubmit={onSubmit2} />
-        {/* <input style={{width:"50rem"}}onChange={(e)=>setTrans(e.target.value)} value={Trans} type="text" /> */}
-      </form>
+    <div className='block'>
+        <div className='imgWrapper'>
+            <img className="canvas" src={ImgURL} />
+        </div>
     </div>
   )
 }

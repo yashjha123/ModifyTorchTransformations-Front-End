@@ -1,14 +1,49 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-const Form = () => {
+import React, { useEffect, useState } from 'react'
+const Form = ({Trans,setTrans, setUUID, setSubmitDisabled}) => {
   const [File, setFile] = useState("")
-  const [UUID, setUUID] = useState("")
-  const [ImgURL,setImgURL] = useState("")
-  const [Trans, setTrans] = useState("transforms = torch.nn.Sequential()")
+  const [previewSrc, setPreviewSrc] = useState("")
+  const fr = new FileReader();
+  // const onLoad = (e) => {
+    // setPreviewSrc(fr.result)
+  // }
+  useEffect(() => {
+    if (!File) {
+      setPreviewSrc(undefined)
+      return
+    }
+    setSubmitDisabled(true)
+
+    const objectUrl = URL.createObjectURL(File)
+    setPreviewSrc(objectUrl)
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [File])
+  const onLoad = e => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setFile(undefined)
+      return
+    }
+    setFile(e.target.files[0]);
+    // const objectUrl = URL.createObjectURL(File);
+    // setPreviewSrc(objectUrl)
+    // Preview Image before upload
+  }
   const onSubmit = (e) => {
     e.preventDefault();
+    if(!File){
+      alert("Please upload file!")
+      return;
+    }
+    setSubmitDisabled(false)
+
     // alert("hello")
 
+    // console.log(fr.result)
+    // setPreviewSrc(fr.result)
+    // setPreviewSrc(fr.readAsDataURL(File)); 
+    // Uploading data to the server
     const formData = new FormData();
     console.log(File)
     formData.append('file', File);
@@ -30,39 +65,17 @@ const Form = () => {
         setUUID(body.id)
       })
   }
-  const onSubmit2 = (e) => {
-    e.preventDefault()
-    if(!UUID){
-      alert("Upload image first!")
-      return;
-    }
-    // fetch('http://localhost:5000/applyTransformations',{
-    //   method: "POST",
-    //   body: JSON.stringify({id:UUID,transforms:Trans}),
-    //   headers: { 'Content-Type': 'application/json' },
-    // }).then(res=>res.json())
-    // .then(body=>{
-    //   console.log(body)
-    // })
-    fetch('http://localhost:5000/applyTransformations',{
-      method: "POST",
-      body: JSON.stringify({id:UUID,transforms:Trans}),
-      headers: { 'Content-Type': 'application/json' },
-    }).then(res=>res.blob())
-    .then(imageBlob=>{
-      const imageObjectURL = URL.createObjectURL(imageBlob);
-      console.log(imageObjectURL);
-      setImgURL(imageObjectURL)
-    })
-  }
   return (
-    <>
+    <div className='block'>
+      <div className='imgWrapper'>
+        <img src={previewSrc} className="canvas"/>
+      </div>
       <form onSubmit={onSubmit}>
         {/* <input onChange={(e)=>setFile(e.target.value)} type="text"></input> */}
-        <input name="InputImage" onChange={(e) => { e.preventDefault(); setFile(e.target.files[0]); }} type="file" />
-        <input type="submit" onSubmit={onSubmit} />
+        <input onChange={onLoad} name="InputImage" type="file" />
+        <input type="submit" onSubmit={onSubmit}/>
       </form>
-    </>
+    </div>
   )
 }
 
