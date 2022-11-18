@@ -5,7 +5,9 @@
 }
 .App {
   text-align: center;
-  background-color: var(--secondary);
+  /* background-color: var(--secondary); */
+  min-height: 100%;
+  font-size: 11px !important;
 }
 .App-logo {
   height: 40vmin;
@@ -30,7 +32,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: b/; */
   background-position: center center;
   animation: wave2 10s ease-in-out infinite;
 
@@ -67,13 +69,17 @@
   background-color: var(--alpha-backgound);
   min-width: 300px;
   min-height: 300px;
+  border-radius: 10px;
 }
 img.canvas{
+  border-radius: 10px;
   width: 300px;
   background-size: 100px 100px;
   /* background-image: linear-gradient(to right, black 2px, transparent 2px),linear-gradient(to right, black 2px, transparent 2px); */
   background-color: var(--alpha-backgound);
 }
 .block{
+  flex: 1;
   margin: 10px;
+  font-size: 12px;
 }

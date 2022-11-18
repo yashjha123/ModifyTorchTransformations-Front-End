@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Form } from 'react-bootstrap'
 
 const InputSequence = ({ setConf, SubmitDisabled, ImgURL, setImgURL, setUUID, UUID, Trans, setTrans }) => {
 
@@ -30,15 +31,17 @@ const InputSequence = ({ setConf, SubmitDisabled, ImgURL, setImgURL, setUUID, UU
   }
   return (
     <div className='block'>
-      <form onSubmit={onSubmit2}>
+      <Form onSubmit={onSubmit2}>
+      {/* <form onSubmit={onSubmit2}> */}
         <textarea style={{ width: "20rem" }} value={Trans} onChange={(e) => setTrans(e.target.value)}></textarea>
         <br />
-        <input type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled} />
+        <Button type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled}>Apply!</Button>
+        {/* <input type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled} /> */}
         <p style={{ "fontSize": '11px' }}>
           {SubmitDisabled ? "Upload image first!" : ""}
         </p>
 
-      </form>
+        </Form>
     </div>
   )
 }

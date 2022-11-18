@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Input from './components/Input';
+import Upload from './components/Upload';
 import InputSequence from './components/InputSequence';
 import Output from './components/Output';
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Input setUUID={setUUID} setSubmitDisabled={setSubmitDisabled}/>
+        <Upload setUUID={setUUID} setSubmitDisabled={setSubmitDisabled}/>
         <InputSequence setConf={setConf} SubmitDisabled={SubmitDisabled} ImgURL setImgURL={setImgURL} Trans ={Trans} setTrans={setTrans} setUUID={setUUID} UUID={UUID} />
         <Output Conf={Conf} ImgURL={ImgURL} />
       </header>
