@@ -1,6 +1,10 @@
+import { faCoffee, faExpand, faRectangleList, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import CodeEditor from "./CodeEditor";
+
+
 const InputSequence = ({
   setConf,
   SubmitDisabled,
@@ -10,7 +14,10 @@ const InputSequence = ({
   UUID,
   Trans,
   setTrans,
-  setAlertText
+  setAlertText,
+  Code,
+  setCode,
+  setShowDialog
 }) => {
   
   const editorRef = useRef(null);
@@ -58,12 +65,12 @@ const InputSequence = ({
   };
   return (
     <div className="block">
+      <Button onClick={(e)=>setShowDialog(true)} variant="outline-dark" style={{float:"right",borderBottom: "0px",borderBottomRightRadius:"0px",borderBottomLeftRadius:"0px"}}>
+        <FontAwesomeIcon icon={faExpand} />
+      </Button>
       <Form onSubmit={onSubmit2}>
-        <CodeEditor editorRef={editorRef} Trans={Trans}/>
+        <CodeEditor Code={Code} setCode={setCode} editorRef={editorRef} Trans={Trans}/>
         <br />
-        
-        <br />
-        
         <Button type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled}>
           Apply!
         </Button>

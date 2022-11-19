@@ -1,3 +1,5 @@
+import { faPhotoFilm } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Navbar } from "react-bootstrap";
 
 
@@ -7,14 +9,9 @@ const MyNav = () => {
       <Navbar bg="dark" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
-            React Bootstrap
+            <FontAwesomeIcon icon={faPhotoFilm} style={{fontSize:'30px'}}/>
+            {" "}
+            Custom PyTorch Transformations!!
           </Navbar.Brand>
         </Container>
       </Navbar>

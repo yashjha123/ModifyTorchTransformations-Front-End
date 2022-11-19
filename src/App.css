@@ -71,8 +71,13 @@
   min-height: 300px;
   max-height: 500px;
   border-radius: 10px;
+  transition: filter 0.1s;
+}
+img.canvas:hover{
+  filter: brightness(50%);
 }
 img.canvas{
+  transition: filter 0.4s;
   border-radius: 1px;
   width: 300px;
   background-size: 100px 100px;
