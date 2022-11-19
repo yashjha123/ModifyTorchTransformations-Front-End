@@ -2,7 +2,13 @@ import axios from "axios";
 // import {  } from 'bootstrap';
 import React, { useEffect, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-const Upload = ({ Trans, setTrans, setUUID, setSubmitDisabled }) => {
+const Upload = ({
+  setAlertText,
+  Trans,
+  setTrans,
+  setUUID,
+  setSubmitDisabled,
+}) => {
   const [File, setFile] = useState("");
   const [previewSrc, setPreviewSrc] = useState("");
   const fr = new FileReader();
@@ -36,7 +42,8 @@ const Upload = ({ Trans, setTrans, setUUID, setSubmitDisabled }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!File) {
-      alert("Please upload file!");
+      // alert("Please upload file!");
+      setAlertText("Upload file first!");
       return;
     }
     setSubmitDisabled(false);
@@ -75,7 +82,7 @@ const Upload = ({ Trans, setTrans, setUUID, setSubmitDisabled }) => {
         <img src={previewSrc} className="canvas" />
       </div>
       <Form onSubmit={onSubmit}>
-        <Form.Label>Upload file to begin!</Form.Label>
+        <Form.Label column="sm">Upload file to begin!</Form.Label>
 
         <InputGroup>
           <Form.Control onChange={onChange} type="file" />

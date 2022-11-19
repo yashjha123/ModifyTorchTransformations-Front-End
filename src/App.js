@@ -1,22 +1,67 @@
-import { useState } from 'react';
-import './App.css';
-import Upload from './components/Upload';
-import InputSequence from './components/InputSequence';
-import Output from './components/Output';
-
+import { useEffect, useState } from "react";
+import "./App.css";
+import Upload from "./components/Upload";
+import InputSequence from "./components/InputSequence";
+import Output from "./components/Output";
+import { Alert, Stack } from "react-bootstrap";
+import MyNav from "./components/MyNav";
 function App() {
-  const [UUID, setUUID] = useState("")
-  const [Trans, setTrans] = useState("torch.nn.Sequential()")
-  const [ImgURL,setImgURL] = useState("")
-  const [SubmitDisabled, setSubmitDisabled] = useState(true)
-  const [Conf, setConf] = useState("")
+  const [UUID, setUUID] = useState("");
+  const [Trans, setTrans] = useState("transforms.Compose([\n\t\n])");
+  const [ImgURL, setImgURL] = useState("");
+  const [SubmitDisabled, setSubmitDisabled] = useState(true);
+  const [Conf, setConf] = useState("");
+  const [AlertText, setAlertText] = useState("");
+  useEffect(() => {
+    if (AlertText != "") {
+      setTimeout(() => {
+        setAlertText("");
+      }, 10000);
+    }
+  }, [AlertText]);
   // useState
+  useEffect(()=>{
+    document.addEventListener("keydown", function(e) {
+      if (e.keyCode === 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+        // Process event...
+      }
+    }, false);
+  },[])
   return (
     <div className="App">
+      <MyNav />
+      {AlertText ? (
+        <Alert className="alert-nav" key={"danger"} variant={"danger"}>
+          {AlertText}
+        </Alert>
+      ) : (
+        ""
+      )}
+
       <header className="App-header">
-        <Upload setUUID={setUUID} setSubmitDisabled={setSubmitDisabled}/>
-        <InputSequence setConf={setConf} SubmitDisabled={SubmitDisabled} ImgURL setImgURL={setImgURL} Trans ={Trans} setTrans={setTrans} setUUID={setUUID} UUID={UUID} />
+      <Stack direction="horizontal" gap={3}>
+        <Upload
+          setUUID={setUUID}
+          setSubmitDisabled={setSubmitDisabled}
+          setAlertText={setAlertText}
+        />
+        <div className="vr" />
+        <InputSequence
+          setConf={setConf}
+          SubmitDisabled={SubmitDisabled}
+          ImgURL
+          setImgURL={setImgURL}
+          Trans={Trans}
+          setTrans={setTrans}
+          setUUID={setUUID}
+          UUID={UUID}
+          setAlertText={setAlertText}
+        />
+        <div className="vr" />
         <Output Conf={Conf} ImgURL={ImgURL} />
+      </Stack>
+
       </header>
     </div>
   );

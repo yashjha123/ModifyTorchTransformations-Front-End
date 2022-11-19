@@ -1,0 +1,207 @@
+{ "completions": [
+    {
+        "l": "transforms.AugMix()",
+        "s": "transforms.AugMix(${1:severity},${2:mixture_width},${3:chain_depth},${4:alpha},${5:all_ops},${6:interpolation},${7:fill})",
+        "doc": "AugMix data augmentation method based on"
+    }, 
+    {
+        "l": "transforms.AutoAugment()",
+        "s": "transforms.AutoAugment(${1:policy},${2:interpolation},${3:fill})",
+        "doc": "AutoAugment data augmentation method based on"
+    }, 
+    {
+        "l": "transforms.AutoAugmentPolicy()",
+        "s": "transforms.AutoAugmentPolicy(${1:value},${2:names})",
+        "doc": "AutoAugment policies learned on different datasets."
+    }, 
+    {
+        "l": "transforms.CenterCrop()",
+        "s": "transforms.CenterCrop(${1:size})",
+        "doc": "Crops the given image at the center."
+    }, 
+    {
+        "l": "transforms.ColorJitter()",
+        "s": "transforms.ColorJitter(${1:brightness},${2:contrast},${3:saturation},${4:hue})",
+        "doc": "Randomly change the brightness, contrast, saturation and hue of an image."
+    }, 
+    {
+        "l": "transforms.Compose()",
+        "s": "transforms.Compose(${1:transforms})",
+        "doc": "Composes several transforms together. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.ConvertImageDtype()",
+        "s": "transforms.ConvertImageDtype(${1:dtype})",
+        "doc": "Convert a tensor image to the given ``dtype`` and scale the values accordingly"
+    }, 
+    {
+        "l": "transforms.ElasticTransform()",
+        "s": "transforms.ElasticTransform(${1:alpha},${2:sigma},${3:interpolation},${4:fill})",
+        "doc": "Transform a tensor image with elastic transformations."
+    }, 
+    {
+        "l": "transforms.FiveCrop()",
+        "s": "transforms.FiveCrop(${1:size})",
+        "doc": "Crop the given image into four corners and the central crop."
+    }, 
+    {
+        "l": "transforms.GaussianBlur()",
+        "s": "transforms.GaussianBlur(${1:kernel_size},${2:sigma})",
+        "doc": "Blurs image with randomly chosen Gaussian blur."
+    }, 
+    {
+        "l": "transforms.Grayscale()",
+        "s": "transforms.Grayscale(${1:num_output_channels})",
+        "doc": "Convert image to grayscale."
+    }, 
+    {
+        "l": "transforms.InterpolationMode()",
+        "s": "transforms.InterpolationMode(${1:value},${2:names})",
+        "doc": "Interpolation modes"
+    }, 
+    {
+        "l": "transforms.Lambda()",
+        "s": "transforms.Lambda(${1:lambd})",
+        "doc": "Apply a user-defined lambda as a transform. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.LinearTransformation()",
+        "s": "transforms.LinearTransformation(${1:transformation_matrix},${2:mean_vector})",
+        "doc": "Transform a tensor image with a square transformation matrix and a mean_vector computed"
+    }, 
+    {
+        "l": "transforms.Normalize()",
+        "s": "transforms.Normalize(${1:mean},${2:std},${3:inplace})",
+        "doc": "Normalize a tensor image with mean and standard deviation."
+    }, 
+    {
+        "l": "transforms.PILToTensor()",
+        "s": "transforms.PILToTensor()",
+        "doc": "Convert a ``PIL Image`` to a tensor of the same type. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.Pad()",
+        "s": "transforms.Pad(${1:padding},${2:fill},${3:padding_mode})",
+        "doc": "Pad the given image on all sides with the given 'pad' value."
+    }, 
+    {
+        "l": "transforms.RandAugment()",
+        "s": "transforms.RandAugment(${1:num_ops},${2:magnitude},${3:num_magnitude_bins},${4:interpolation},${5:fill})",
+        "doc": "RandAugment data augmentation method based on"
+    }, 
+    {
+        "l": "transforms.RandomAdjustSharpness()",
+        "s": "transforms.RandomAdjustSharpness(${1:sharpness_factor},${2:p})",
+        "doc": "Adjust the sharpness of the image randomly with a given probability. If the image is torch Tensor,"
+    }, 
+    {
+        "l": "transforms.RandomAffine()",
+        "s": "transforms.RandomAffine(${1:degrees},${2:translate},${3:scale},${4:shear},${5:interpolation},${6:fill},${7:center})",
+        "doc": "Random affine transformation of the image keeping center invariant."
+    }, 
+    {
+        "l": "transforms.RandomApply()",
+        "s": "transforms.RandomApply(${1:transforms},${2:p})",
+        "doc": "Apply randomly a list of transformations with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomAutocontrast()",
+        "s": "transforms.RandomAutocontrast(${1:p})",
+        "doc": "Autocontrast the pixels of the given image randomly with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomChoice()",
+        "s": "transforms.RandomChoice(${1:transforms},${2:p})",
+        "doc": "Apply single transformation randomly picked from a list. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.RandomCrop()",
+        "s": "transforms.RandomCrop(${1:size},${2:padding},${3:pad_if_needed},${4:fill},${5:padding_mode})",
+        "doc": "Crop the given image at a random location."
+    }, 
+    {
+        "l": "transforms.RandomEqualize()",
+        "s": "transforms.RandomEqualize(${1:p})",
+        "doc": "Equalize the histogram of the given image randomly with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomErasing()",
+        "s": "transforms.RandomErasing(${1:p},${2:scale},${3:ratio},${4:value},${5:inplace})",
+        "doc": "Randomly selects a rectangle region in an torch Tensor image and erases its pixels."
+    }, 
+    {
+        "l": "transforms.RandomGrayscale()",
+        "s": "transforms.RandomGrayscale(${1:p})",
+        "doc": "Randomly convert image to grayscale with a probability of p (default 0.1)."
+    }, 
+    {
+        "l": "transforms.RandomHorizontalFlip()",
+        "s": "transforms.RandomHorizontalFlip(${1:p})",
+        "doc": "Horizontally flip the given image randomly with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomInvert()",
+        "s": "transforms.RandomInvert(${1:p})",
+        "doc": "Inverts the colors of the given image randomly with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomOrder()",
+        "s": "transforms.RandomOrder(${1:transforms})",
+        "doc": "Apply a list of transformations in a random order. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.RandomPerspective()",
+        "s": "transforms.RandomPerspective(${1:distortion_scale},${2:p},${3:interpolation},${4:fill})",
+        "doc": "Performs a random perspective transformation of the given image with a given probability."
+    }, 
+    {
+        "l": "transforms.RandomPosterize()",
+        "s": "transforms.RandomPosterize(${1:bits},${2:p})",
+        "doc": "Posterize the image randomly with a given probability by reducing the"
+    }, 
+    {
+        "l": "transforms.RandomResizedCrop()",
+        "s": "transforms.RandomResizedCrop(${1:size},${2:scale},${3:ratio},${4:interpolation},${5:antialias})",
+        "doc": "Crop a random portion of image and resize it to a given size."
+    }, 
+    {
+        "l": "transforms.RandomRotation()",
+        "s": "transforms.RandomRotation(${1:degrees},${2:interpolation},${3:expand},${4:center},${5:fill})",
+        "doc": "Rotate the image by angle."
+    }, 
+    {
+        "l": "transforms.RandomSolarize()",
+        "s": "transforms.RandomSolarize(${1:threshold},${2:p})",
+        "doc": "Solarize the image randomly with a given probability by inverting all pixel"
+    }, 
+    {
+        "l": "transforms.RandomVerticalFlip()",
+        "s": "transforms.RandomVerticalFlip(${1:p})",
+        "doc": "Vertically flip the given image randomly with a given probability."
+    }, 
+    {
+        "l": "transforms.Resize()",
+        "s": "transforms.Resize(${1:size},${2:interpolation},${3:max_size},${4:antialias})",
+        "doc": "Resize the input image to the given size."
+    }, 
+    {
+        "l": "transforms.TenCrop()",
+        "s": "transforms.TenCrop(${1:size},${2:vertical_flip})",
+        "doc": "Crop the given image into four corners and the central crop plus the flipped version of"
+    }, 
+    {
+        "l": "transforms.ToPILImage()",
+        "s": "transforms.ToPILImage(${1:mode})",
+        "doc": "Convert a tensor or an ndarray to PIL Image. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.ToTensor()",
+        "s": "transforms.ToTensor()",
+        "doc": "Convert a ``PIL Image`` or ``numpy.ndarray`` to tensor. This transform does not support torchscript."
+    }, 
+    {
+        "l": "transforms.TrivialAugmentWide()",
+        "s": "transforms.TrivialAugmentWide(${1:num_magnitude_bins},${2:interpolation},${3:fill})",
+        "doc": "Dataset-independent data-augmentation with TrivialAugment Wide, as described in"
+    }    
+] }
