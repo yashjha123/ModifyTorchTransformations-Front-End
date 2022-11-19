@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import CodeEditor from "./CodeEditor";
 import transformations from "../transformations.json";
 const InputSequence = ({
@@ -28,6 +28,8 @@ const InputSequence = ({
   setShowDialog,
 }) => {
   const editorRef = useRef(null);
+  const [Normalised, setNormalised] = useState(false)
+  const [Scale, setScale] = useState(false)
   const [Type, setType] = useState("0");
   const [transList, setTransList] = useState(transformations.value);
   const onSubmit2 = (e) => {
@@ -44,8 +46,8 @@ const InputSequence = ({
         id: UUID,
         transforms: editorRef.current.getValue(),
         conf: {
-          normalize_range: true,
-          scale_range: false,
+          normalize_range: Normalised,
+          scale_range: Scale,
         },
       }),
       headers: { "Content-Type": "application/json" },
@@ -143,6 +145,32 @@ const InputSequence = ({
           height="20vh"
         />
         <br />
+        {/* <InputGroup className="mb-3"> */}
+          {/* <Row> */}
+            <Row>
+              <Form.Check
+                type="switch"
+                id="Normalise"
+                disabled={SubmitDisabled}
+                label="Scale color range?"
+                onClick={(e) => {
+                  setScale(e.target.checked)
+                }}
+              />
+            </Row>
+            <Row>
+              <Form.Check
+                type="switch"
+                disabled={SubmitDisabled}
+                id="custom-switch"
+                label="Normalise color range?"
+                onClick={(e) => {
+                  setNormalised(e.target.checked)
+                }}
+              />
+            </Row>
+          {/* </Row> */}
+        {/* </InputGroup> */}
         <Button type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled}>
           Apply {"  "}
           <FontAwesomeIcon icon={faWandMagicSparkles} />

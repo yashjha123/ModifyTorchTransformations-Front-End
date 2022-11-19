@@ -114,3 +114,15 @@ img.canvas{
     /* transform: translateY(100vh); */
   }
 }
+
+@media screen and (min-width: 1000px) { 
+  .block{
+    width: 100%;
+  }
+  .hstack{
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-self: stretch;
+  }
+}

@@ -78,7 +78,7 @@ function App() {
             setShowDialog={setShowDialog}
           />
           <div className="vr" />
-          <Output Conf={Conf} ImgURL={ImgURL} />
+          <Output setImgURL={setImgURL} setConf={setConf} Conf={Conf} ImgURL={ImgURL} />
         </Stack>
       </header>
     </div>

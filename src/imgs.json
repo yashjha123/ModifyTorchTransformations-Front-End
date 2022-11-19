@@ -1,0 +1,10 @@
+{
+    "value":[
+        {"name":"Face","file":"face.jpeg","index":1},
+        {"name":"Flower","file":"flower.jpg","index":2},
+        {"name":"Flowers","file":"flowers.jpg","index":3},
+        {"name":"Architecture","file":"image.jpeg","index":4},
+        {"name":"Sheep Sketch","file":"sheep.png","index":5},
+        {"name":"Clock Tower","file":"town.jpg","index":6}
+    ]
+}
