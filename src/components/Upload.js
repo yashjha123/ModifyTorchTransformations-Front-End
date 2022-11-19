@@ -1,5 +1,8 @@
+import { faUpload, faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 // import {  } from 'bootstrap';
+
 import React, { useEffect, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 const Upload = ({
@@ -87,7 +90,8 @@ const Upload = ({
         <InputGroup>
           <Form.Control onChange={onChange} type="file" />
           <Button type="submit" onSubmit={onSubmit}>
-            Upload!
+            Upload {'   '}<FontAwesomeIcon icon={faFileUpload}/>
+
           </Button>
           {/* <input onChange={(e)=>setFile(e.target.value)} type="text"></input>
           <input onChange={onChange} name="InputImage" type="file" />

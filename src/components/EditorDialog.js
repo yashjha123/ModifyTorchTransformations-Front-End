@@ -25,6 +25,7 @@ const EditorDialog = ({ setShowDialog, ShowDialog, Code, setCode }) => {
         </Modal.Header>
         <Modal.Body>
           <CodeEditor
+            height="40vh"
             Code={Code}
             setCode={setCode}
             editorRef={editorRef}

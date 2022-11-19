@@ -14,13 +14,13 @@ const Output = ({ Conf, ImgURL }) => {
       {Conf ? (
         <>
           <Badge bg="success">{Conf["file_type"]}</Badge>{" "}
-          <Badge bg="success">{Conf["file_type_encoded"]}</Badge>
+          <Badge bg="success">{Conf["file_type_encoded"]}</Badge>{" "}
           <Badge bg="info">
             {Conf["is_scaled"] ? "Color Range Scaled" : ""}
-          </Badge>
+          </Badge>{" "}
           <Badge bg="info">
             {Conf["is_normalised"] ? "Color Range Normalised" : ""}
-          </Badge>
+          </Badge>{" "}
           <br />
           <br />
         </>

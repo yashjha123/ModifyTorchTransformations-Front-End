@@ -13,7 +13,7 @@ function App() {
   const [SubmitDisabled, setSubmitDisabled] = useState(true);
   const [Conf, setConf] = useState("");
   const [AlertText, setAlertText] = useState("");
-  const [ShowDialog, setShowDialog] = useState(true);
+  const [ShowDialog, setShowDialog] = useState(false);
   const [Code, setCode] = useState(Trans);
   useEffect(() => {
     if (AlertText != "") {

@@ -1,0 +1,29 @@
+{
+  "value": [
+    {
+      "index": 0,
+      "name": "Baseline",
+      "code": "transforms.Compose([\n\ttransforms.CenterCrop(10),\n\ttransforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),\n])"
+    },
+    {
+      "index": 1,
+      "name": "ResNet",
+      "code": "transforms.Compose([\n\ttransforms.Resize(256),\n\ttransforms.CenterCrop(224),\n\ttransforms.ToTensor(),\n\ttransforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n])"
+    },
+    {
+      "index": 2,
+      "name": "GoogLeNet",
+      "code": "transforms.Compose([\n\ttransforms.Resize(256),\n\ttransforms.CenterCrop(224),\n\ttransforms.ToTensor(),\n\ttransforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n])"
+    },
+    {
+      "index": 3,
+      "name": "Inception V3",
+      "code": "transforms.Compose([\n\ttransforms.Resize(299),\n\ttransforms.CenterCrop(299),\n\ttransforms.ToTensor(),\n\ttransforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n])"
+    },
+    {
+      "index": 4,
+      "name": "AlexNet",
+      "code": "transforms.Compose([\n\ttransforms.Resize(256),\n\ttransforms.CenterCrop(224),\n\ttransforms.ToTensor(),\n\ttransforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n])"
+    }
+  ]
+}

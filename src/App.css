@@ -1,7 +1,7 @@
 :root{
   --primary: #557153;
   --secondary: #7D8F69;
-  --alpha-backgound: rgba(100,100,100,0.5);
+  --alpha-backgound: #373940;
 }
 .App {
   text-align: center;
@@ -12,7 +12,13 @@
   height: 40vmin;
   pointer-events: none;
 }
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
 
+  /* the rest of your styling */
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -96,7 +102,7 @@ img.canvas{
   top: 0;
   left: 0;
   width: 100% !important;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 @keyframes popAlert {

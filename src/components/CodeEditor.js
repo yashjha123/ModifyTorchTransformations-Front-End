@@ -2,7 +2,7 @@ import Editor, { useMonaco } from "@monaco-editor/react";
 import { useEffect, useRef, useState } from "react";
 import suggestions from "../suggestion";
 
-const CodeEditor = ({Code, setCode, Trans,editorRef}) => {
+const CodeEditor = ({height,Code, setCode, Trans,editorRef}) => {
   
   const monaco = useMonaco();
   const [completionDisposable, setcompletionDisposable] = useState({});
@@ -101,7 +101,7 @@ const CodeEditor = ({Code, setCode, Trans,editorRef}) => {
   return (
     <div>
       <Editor
-        height="40vh"
+        height={height}
         defaultLanguage="python"
         defaultValue={Code}
         onMount={handleEditorDidMount}

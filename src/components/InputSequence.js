@@ -1,10 +1,18 @@
-import { faCoffee, faExpand, faRectangleList, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCoffee,
+  faExpand,
+  faRectangleList,
+  faWindowMaximize,
+  faPlus,
+  faWandMagic,
+  faWandMagicSparkles,
+  faCopy,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import CodeEditor from "./CodeEditor";
-
-
+import transformations from "../transformations.json";
 const InputSequence = ({
   setConf,
   SubmitDisabled,
@@ -17,10 +25,11 @@ const InputSequence = ({
   setAlertText,
   Code,
   setCode,
-  setShowDialog
+  setShowDialog,
 }) => {
-  
   const editorRef = useRef(null);
+  const [Type, setType] = useState("0");
+  const [transList, setTransList] = useState(transformations.value);
   const onSubmit2 = (e) => {
     e.preventDefault();
     setTrans(editorRef.current.getValue());
@@ -42,37 +51,101 @@ const InputSequence = ({
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
-        if(!res.ok) {
+        if (!res.ok) {
           // alert("Not okay!")
-          console.log(res)
-          return (res.json()).then(res => { 
-            setAlertText(res.error+"\n"+res.message)
-            console.log(res)})
-         }
-         else{
-        return res.formData()}})
+          console.log(res);
+          return res.json().then((res) => {
+            setAlertText(res.error + "\n" + res.message);
+            console.log(res);
+          });
+        } else {
+          return res.formData();
+        }
+      })
       .then((res) => {
         const val = JSON.parse(res.get("field0"));
-        setConf((val));
+        setConf(val);
         const imageObjectURL = URL.createObjectURL(res.get("field1"));
         console.log(imageObjectURL);
         setImgURL(imageObjectURL);
       })
-      .catch(error=>{
+      .catch((error) => {
         // alert(error);
-        console.log(error)
-      })
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    setCode(transList[parseInt(Type)].code);
+  }, [Type]);
+  const addNew = () => {
+    const current = transList[parseInt(Type)].name;
+    setTransList([
+      ...transList,
+      {
+        name: current + " (copy)",
+        code: Code,
+        index: transList.length,
+      },
+    ]);
   };
   return (
     <div className="block">
-      <Button onClick={(e)=>setShowDialog(true)} variant="outline-dark" style={{float:"right",borderBottom: "0px",borderBottomRightRadius:"0px",borderBottomLeftRadius:"0px"}}>
+      <InputGroup className="mb-3">
+        <Form.Select
+          aria-label="Default select example"
+          onChange={(e) => {
+            setType(e.target.value);
+          }}
+        >
+          <option>Open this select menu</option>
+          {transList.map((value) => (
+            <option key={value.index} value={value.index}>
+              {value.name}
+            </option>
+          ))}
+        </Form.Select>
+        <Button onClick={addNew}>
+          <FontAwesomeIcon icon={faPlus} />
+        </Button>
+      </InputGroup>
+      <Button
+        onClick={(e) => setShowDialog(true)}
+        variant="outline-dark"
+        style={{
+          float: "right",
+          borderBottom: "0px",
+          borderBottomRightRadius: "0px",
+          borderBottomLeftRadius: "0px",
+        }}
+      >
         <FontAwesomeIcon icon={faExpand} />
       </Button>
+      <Button
+        style={{
+          float: "left",
+          borderBottom: "0px",
+          borderBottomRightRadius: "0px",
+          borderBottomLeftRadius: "0px",
+        }}
+        variant="outline-dark"
+        onClick={() => {
+          navigator.clipboard.writeText(Code);
+        }}
+      >
+        <FontAwesomeIcon icon={faCopy} />{" "}
+      </Button>
       <Form onSubmit={onSubmit2}>
-        <CodeEditor Code={Code} setCode={setCode} editorRef={editorRef} Trans={Trans}/>
+        <CodeEditor
+          Code={Code}
+          setCode={setCode}
+          editorRef={editorRef}
+          Trans={Trans}
+          height="20vh"
+        />
         <br />
         <Button type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled}>
-          Apply!
+          Apply {"  "}
+          <FontAwesomeIcon icon={faWandMagicSparkles} />
         </Button>
         {/* <input type="submit" onSubmit={onSubmit2} disabled={SubmitDisabled} /> */}
         <p style={{ fontSize: "11px" }}>
